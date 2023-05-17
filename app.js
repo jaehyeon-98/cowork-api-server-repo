@@ -4,6 +4,8 @@ const app = express();
 
 let members = require("./members");
 
+const { Member } = db;
+
 app.use(express.json());
 
 app.get("/api/members", (req, res) => {
@@ -58,6 +60,7 @@ app.delete("/api/members/:id", (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
+  //PORT라는 환경변수가 없으면 3000번 적용
   console.log("Server is Listening...");
 });
